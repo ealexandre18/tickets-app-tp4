@@ -1,10 +1,10 @@
-import { filtrerTickets } from "./tickets";
+import { filtrerTickets, filtrerTicketsKanban } from "./tickets";
 
 const jeuTests = [
-  { id: "1", titre: "Imprimante en panne", statut: "Ouvert", priorite: "Basse" },
-  { id: "2", titre: "Accès VPN bloqué", statut: "En cours", priorite: "Haute" },
-  { id: "3", titre: "Imprimante réseau lente", statut: "Résolu", priorite: "Moyenne" },
-  { id: "4", titre: "VPN instable", statut: "Ouvert", priorite: "Haute" },
+  { id: "1", titre: "Imprimante en panne", auteur: "M. Durand", statut: "Ouvert", priorite: "Basse" },
+  { id: "2", titre: "Accès VPN bloqué", auteur: "Mme Martin", statut: "En cours", priorite: "Haute" },
+  { id: "3", titre: "Imprimante réseau lente", auteur: "M. Petit", statut: "Résolu", priorite: "Moyenne" },
+  { id: "4", titre: "VPN instable", auteur: "Mme Leroy", statut: "Ouvert", priorite: "Haute" },
 ];
 
 describe("filtrerTickets", () => {
@@ -38,5 +38,14 @@ describe("filtrerTickets", () => {
     });
     expect(res).toHaveLength(1);
     expect(res[0].id).toBe("1");
+  });
+});
+
+describe("filtrerTicketsKanban", () => {
+  it("filtre par recherche et priorité et gère les valeurs absentes", () => {
+    expect(filtrerTicketsKanban(jeuTests)).toHaveLength(4);
+    expect(filtrerTicketsKanban(jeuTests, "vpn", "Toutes")).toHaveLength(2);
+    expect(filtrerTicketsKanban(jeuTests, "", "Haute")).toHaveLength(2);
+    expect(filtrerTicketsKanban(jeuTests, "leroy", "Haute")).toHaveLength(1);
   });
 });
