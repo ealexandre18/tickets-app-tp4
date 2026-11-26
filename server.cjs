@@ -61,6 +61,15 @@ server.delete("/tickets/:id", (req, res, next) => {
   next();
 });
 
+const TAUX_PANNE = Number(process.env.TAUX_PANNE || 0);
+
+server.patch("/tickets/:id", (req, res, next) => {
+  if (Math.random() < TAUX_PANNE) {
+    return res.status(500).json({ message: "Panne simulée" });
+  }
+  next();
+});
+
 server.use(router);
 server.listen(3001, () => {
   console.log("API sécurisée sur http://localhost:3001");
