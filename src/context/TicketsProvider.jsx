@@ -86,6 +86,38 @@ export function TicketsProvider({ children }) {
     [modifierTicket]
   );
 
+  const deplacerTicket = useCallback(
+    async (id, nouveauStatut) => {
+      const ticket = etat.tickets.find((t) => String(t.id) === String(id));
+      if (!ticket || ticket.statut === nouveauStatut) {
+        return false;
+      }
+
+      const ancienStatut = ticket.statut;
+      dispatch({ type: "EFFACER_ERREUR" });
+      dispatch({ type: "DEPLACER", id, statut: nouveauStatut });
+
+      try {
+        const ticketModifie = await apiFetch(`/tickets/${id}`, {
+          method: "PATCH",
+          body: JSON.stringify({ statut: nouveauStatut }),
+        });
+        dispatch({ type: "MODIFICATION", ticket: ticketModifie });
+        afficherNotification(`Ticket déplacé vers « ${nouveauStatut} ».`);
+        return true;
+      } catch {
+        dispatch({ type: "DEPLACER", id, statut: ancienStatut });
+        dispatch({
+          type: "ERREUR",
+          message: `Déplacement annulé : erreur serveur pour « ${ticket.titre} ».`,
+        });
+        afficherNotification("Déplacement annulé : erreur du serveur.");
+        return false;
+      }
+    },
+    [etat.tickets, afficherNotification]
+  );
+
   return (
     <TicketsContext.Provider
       value={{
@@ -97,6 +129,7 @@ export function TicketsProvider({ children }) {
         supprimerTicket,
         modifierTicket,
         changerStatut,
+        deplacerTicket,
       }}
     >
       {children}

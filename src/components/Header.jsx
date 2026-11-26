@@ -19,6 +19,9 @@ function Header() {
             <NavLink to="/tickets" end className={({ isActive }) => (isActive ? "active" : "")}>
               Tickets
             </NavLink>
+            <NavLink to="/kanban" className={({ isActive }) => (isActive ? "active" : "")}>
+              Kanban
+            </NavLink>
             <NavLink to="/tickets/nouveau" className={({ isActive }) => (isActive ? "active" : "")}>
               Nouveau ticket
             </NavLink>

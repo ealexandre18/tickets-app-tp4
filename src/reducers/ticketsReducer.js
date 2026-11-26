@@ -36,6 +36,18 @@ export function ticketsReducer(etat, action) {
           t.id === action.ticket.id ? action.ticket : t
         ),
       };
+    case "DEPLACER":
+      return {
+        ...etat,
+        tickets: etat.tickets.map((t) =>
+          String(t.id) === String(action.id) ? { ...t, statut: action.statut } : t
+        ),
+      };
+    case "EFFACER_ERREUR":
+      return {
+        ...etat,
+        erreur: null,
+      };
     case "RESET":
       return etatInitial;
     default:

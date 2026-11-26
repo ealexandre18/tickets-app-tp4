@@ -21,3 +21,16 @@ export function filtrerTickets(tickets, { recherche = "", statut = "Tous", tri =
     (a, b) => (ordrePriorite[a.priorite] || 99) - (ordrePriorite[b.priorite] || 99)
   );
 }
+
+export function filtrerTicketsKanban(tickets, recherche = "", priorite = "Toutes") {
+  const terme = recherche.trim().toLowerCase();
+
+  return tickets.filter((ticket) => {
+    const correspondRecherche =
+      !terme ||
+      ticket.titre.toLowerCase().includes(terme) ||
+      ticket.auteur.toLowerCase().includes(terme);
+    const correspondPriorite = priorite === "Toutes" || ticket.priorite === priorite;
+    return correspondRecherche && correspondPriorite;
+  });
+}
