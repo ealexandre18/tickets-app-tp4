@@ -1,5 +1,6 @@
 import { useParams, Link } from "react-router-dom";
 import { useTickets } from "../context/TicketsContext";
+import CommentairesTicket from "../components/CommentairesTicket";
 
 function DetailTicket() {
   const { id } = useParams();
@@ -70,6 +71,8 @@ function DetailTicket() {
             Retour à la liste des tickets
           </Link>
         </div>
+
+        <CommentairesTicket ticketId={ticket.id} />
       </div>
     </div>
   );
