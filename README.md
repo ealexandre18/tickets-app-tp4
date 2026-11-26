@@ -33,6 +33,23 @@ npm run api
 npm run dev
 ```
 
+Pour simuler des pannes API (50 % d'erreurs sur `PATCH /tickets/:id`) et tester le retour arrière du Kanban :
+
+```bash
+TAUX_PANNE=0.5 npm run api
+```
+
+Sous PowerShell :
+
+```powershell
+$env:TAUX_PANNE="0.5"; npm run api
+```
+
+## Nouvelles fonctionnalités (TP4)
+
+- **Tableau Kanban (`/kanban`)** : trois colonnes (`Ouvert`, `En cours`, `Résolu`) avec glisser-déposer HTML5 natif, contrôle clavier (« Déplacer vers »), mises à jour optimistes avec retour arrière en cas d'erreur, filtres conservés dans l'URL (`?q=...&priorite=...`), annonces `aria-live` et protection par `ErrorBoundary`.
+- **Commentaires sur les tickets** : composant `CommentairesTicket` sécurisé (protection XSS).
+
 ## Comptes de test
 
 | Rôle | Email | Mot de passe |
