@@ -1,0 +1,15 @@
+src/
+├── components/
+│   ├── Header.jsx
+│   ├── Ticket.jsx
+│   ├── TicketList.jsx
+│   └── TicketForm.jsx
+├── pages/
+│   ├── Accueil.jsx
+│   ├── Tickets.jsx
+│   ├── DetailTicket.jsx
+│   └── Page404.jsx
+├── App.css
+├── App.jsx
+├── index.css
+└── main.jsx

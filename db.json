@@ -1,0 +1,52 @@
+{
+  "tickets": [
+    {
+      "id": "1",
+      "titre": "Imprimante en panne",
+      "auteur": "M. Durand",
+      "priorite": "Haute",
+      "statut": "Ouvert",
+      "description": "L'imprimante réseau du deuxième étage n'imprime plus et affiche un voyant rouge."
+    },
+    {
+      "id": "2",
+      "titre": "Accès VPN refusé",
+      "auteur": "Mme Martin",
+      "priorite": "Moyenne",
+      "statut": "En cours",
+      "description": "Impossible de se connecter au VPN entreprise depuis le domicile de l'utilisatrice."
+    },
+    {
+      "id": "3",
+      "titre": "Écran qui clignote",
+      "auteur": "M. Petit",
+      "priorite": "Basse",
+      "statut": "Résolu",
+      "description": "L'écran secondaire du poste de travail clignote par intermittence."
+    },
+    {
+      "id": "7rg_b9XMj1M",
+      "titre": "Panne switch réseau",
+      "auteur": "Mme Leroy",
+      "priorite": "Haute",
+      "description": "Le commutateur Cisco du premier étage ne répond plus aux requêtes ping.",
+      "statut": "Ouvert"
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "nom": "Alice Admin",
+      "email": "admin@webdev.fr",
+      "role": "admin",
+      "motDePasseHash": "$2b$10$JLb.MAzP22pHUVxMTY9Oy.1wJ/goI5/wNoyRa0FM.Y.bXYISCBgD."
+    },
+    {
+      "id": 2,
+      "nom": "Tom Technicien",
+      "email": "tech@webdev.fr",
+      "role": "technicien",
+      "motDePasseHash": "$2b$10$p00gp/vk8u2Rmnz9EpMcBe8XmPA.gxlP5jSM440BJasv3OcaoBnby"
+    }
+  ]
+}
